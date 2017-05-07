@@ -1,0 +1,18 @@
+ion-app._gmaps_cdv_ .nav-decor {
+	background-color: rgba(0, 0, 0, 0) !important;
+	height: 100%;
+}
+
+home-page {
+	text-align: center;
+	#map {
+		height: 100%;
+		z-index: 9999;
+	}
+}
+
+.no-scroll {
+	.scroll-content {
+		overflow-y: hidden;
+	}
+}
