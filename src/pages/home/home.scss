@@ -1,28 +1,48 @@
-ion-app._gmaps_cdv_ .nav-decor {
-	height: 100% !important;
-	background-color: rgba(0, 0, 0, 0) !important;
+.home{
+	font-family: 'Nunito';
+	color: white;
+	//text-shadow: 1px 0 0 gray, -1px 0 0 gray, 0 1px 0 gray, 0 -1px 0 gray, 1px 1px gray, -1px -1px 0 gray, 1px -1px 0 gray, -1px 1px 0 gray;
+	h1{
+		font-size: 5rem;
+	}
 }
-
-_gmaps_cdv_ #map{
-	height: 100% !important;
-}
-
-#map {
-	height: 100% !important;
-	z-index: 9999;
-}
-
 
 home-page {
-	text-align: center;
-	#map {
-		height: 100% !important;
-		z-index: 9999;
+	ion-input.right > input {
+		text-align: right;
 	}
 }
 
-.no-scroll {
-	.scroll-content {
-		overflow-y: hidden;
-	}
+.fullscreen-bg{
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	overflow: hidden;
+	z-index: -100;
+}
+
+.fullscreen-bg__video{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width:100%;
+}
+
+.center {
+	top: 20%;
+	transform: translateY(-50%);
+	position: absolute !important;
+	text-align: center;
+	width:100%;
+}
+
+.form {
+	top: 50%;
+	left: 25%;
+	transform: translateY(-50%);
+	position: absolute !important;
+	text-align: center;
+	width:50%;
 }

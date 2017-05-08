@@ -14,6 +14,17 @@
   <allow-intent href="sms:*"/>
   <allow-intent href="mailto:*"/>
   <allow-intent href="geo:*"/>
+
+  <access origin="*"/>
+  <access origin="tel:*" launch-external="yes"/>
+  <allow-navigation href="*"/>
+  <allow-navigation href="http://*/*"/>
+  <allow-navigation href="https://*/*"/>
+  <allow-navigation href="data:*"/>
+  <allow-intent href="*"/>
+  <access origin="*"/>
+
+
   <platform name="android">
     <allow-intent href="market:*"/>
     <preference name="loadUrlTimeoutValue" value="700000"/>
@@ -29,6 +40,7 @@
   <preference name="BackupWebStorage" value="none"/>
   <preference name="SplashMaintainAspectRatio" value="true"/>
   <preference name="FadeSplashScreenDuration" value="300"/>
+  <preference name="AllowInlineMediaPlayback" value="true"/>
   <preference name="SplashShowOnlyFirstTime" value="false"/>
   <feature name="StatusBar">
     <param name="ios-package" onload="true" value="CDVStatusBar"/>
