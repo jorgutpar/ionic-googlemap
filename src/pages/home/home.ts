@@ -11,7 +11,7 @@ import { MapPage } from '../map/map';
 })
 export class HomePage {
 
-  public email: string = "";
+  public username: string = "";
   public password: string = "";
   public name: string = "";
   public birthday: string = "";
@@ -32,7 +32,7 @@ export class HomePage {
 
   register(){
     let details: UserDetails = {
-      'email': this.email,
+      'username': this.username,
       'password': this.password
     };
     let loader = this.loadingCtrl.create({
@@ -42,7 +42,7 @@ export class HomePage {
     loader.present();
     this.auth.signup(details).then(() => {
       loader.dismiss();
-      return this.auth.login('basic', {'email': this.email,
+      return this.auth.login('basic', {'username': this.username,
       'password': this.password});
     }, (err: IDetailedError<string[]>) => {
         loader.dismiss();
@@ -57,7 +57,7 @@ export class HomePage {
   }
 
   login(){
-    let details: UserDetails = {'email': this.email, 'password': this.password};
+    let details: UserDetails = {'username': this.username, 'password': this.password};
     let loader = this.loadingCtrl.create({
       content: "Loggin in user..."
     });
@@ -66,12 +66,12 @@ export class HomePage {
     this.auth.login('basic', details).then((data) => {
       this.initProfile();
       loader.dismiss();
+      //this.navCtrl.push(this.mapPage);
     }, (err) => {
       loader.dismiss();
       alert('Login Error');
     });
 
-    this.navCtrl.push(this.mapPage);
 
   }
 
@@ -94,7 +94,7 @@ export class HomePage {
 
   logout(){
     this.auth.logout();
-    this.email = '';
+    this.username = '';
     this.name = '';
     this.birthday = '';
     this.password = '';
@@ -112,7 +112,7 @@ export class HomePage {
         });
  
     }
- 
+
     gLogout(){
  
         GooglePlus.logout().then(() => {

@@ -1,14 +1,14 @@
 
 
 <ion-content class="home">
-	<div class="fullscreen-bg">
-		<video class="fullscreen-bg__video" autoplay loop muted webkit-playsinline>
-		<source src="assets/Ground-Zero.mp4" type='video/mp4; codecs="h.264"' >
-		<source src="assets/Ground-Zero.webm" type="video/webm" >
+	<div class="fullscreen-bg"  style="width:100%;height:100%;margin-top:0px;padding:0px;">
+		<video class="fullscreen-bg__video" autoplay loop muted webkit-playsinline playsinline>
+			<source src="assets/Ground-Zero.mp4" type='video/mp4; codecs="h.264"' >
+			<source src="assets/Ground-Zero.webm" type="video/webm" >
 		</video>
-
-	<div class="center animated zoomIn">
-		<h1>Map&Share</h1>
+		<div class="center animated zoomIn">
+			<h1>Map&Share</h1>
+		</div>
 	</div>
 
 
@@ -25,12 +25,7 @@
 			</ion-item>
 		</ion-list>
 
-		<ion-grid>
-			<ion-row>
-				<ion-col width-50>
-					<button ion-button block (click)="register()">Register</button>
-				</ion-col>
-			</ion-row>
+		<ion-grid>	
 			<ion-row>
 				<ion-col width-50>
 					<button ion-button block (click)="login()">Login</button>
@@ -38,16 +33,24 @@
 			</ion-row>
 			<ion-row>
 				<ion-col width-50>
-				    <button ion-button full (click)="gLogin()">Google Login</button>
+					<button ion-button block color="secondary" (click)="register()">Register</button>
 				</ion-col>
 			</ion-row>
 		</ion-grid>
 	</div>
 
 <div *ngIf="auth.isAuthenticated()">
-	<h4>User Profile</h4>
+	<ion-col width-50>
+		<button ion-button block (click)="openMap()">Open Map</button>
+	</ion-col>
+	<ion-col width-50>
+		<button ion-button block (click)="mySites()">My sites</button>
+	</ion-col>
+	<ion-col width-50>
+		<button ion-button color="dark" block (click)="logout()">Logout</button>
+	</ion-col>	
 
-
+<!--	<h4>User Profile</h4>
 	<ion-list *ngIf="auth.isAuthenticated()">
 		<ion-item>
 			<ion-label fixed>Name</ion-label>
@@ -58,8 +61,6 @@
 			<ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="birthday"></ion-datetime>
 		</ion-item>
 	</ion-list>
-
-
 		<ion-grid>
 			<ion-row>
 				<ion-col width-50>
@@ -69,11 +70,7 @@
 					<button ion-button color="dark" block (click)="logout()">Logout</button>
 				</ion-col>
 			</ion-row>
-		</ion-grid>
+		</ion-grid> -->
 </div>
-
-	</div>
-
-
 
 </ion-content>
