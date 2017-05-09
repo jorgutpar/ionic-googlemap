@@ -3,6 +3,7 @@ import { NavController, LoadingController, ToastController } from 'ionic-angular
 import { Auth, User, UserDetails, IDetailedError } from '@ionic/cloud-angular';
 import { GooglePlus } from 'ionic-native';
 import { MapPage } from '../map/map';
+import { HomePage } from '../home/home';
 
 
 @Component({
@@ -17,7 +18,6 @@ export class RegisterPage {
   public birthday: string = "";
   public mapPage: any = MapPage;
 
-
   constructor(public navCtrl: NavController, public auth: Auth, public user: User, public loadingCtrl: LoadingController, public toastCtrl: ToastController) {
     this.initProfile();
   }
@@ -29,6 +29,13 @@ export class RegisterPage {
     }
   }
 
+  back(){
+    this.navCtrl.push(HomePage);
+  }
+
+  doRegister(){
+
+  }
 
   register(){
     let details: UserDetails = {

@@ -7,53 +7,37 @@
 			<source src="assets/Ground-Zero.webm" type="video/webm" >
 		</video>
 		<div class="center animated zoomIn">
-			<h1>Map&Share</h1>
+			<h1>Register</h1>
 		</div>
 	</div>
 
 
 
-		<div *ngIf="!auth.isAuthenticated()" class="form">
+	<div class="form">
 		<ion-list>
 			<ion-item>
-				<ion-label fixed>Email</ion-label>
-				<ion-input type="text" [(ngModel)]="email"></ion-input>
+				<ion-label fixed>Username</ion-label>
+				<ion-input type="text" [(ngModel)]="username"></ion-input>
 			</ion-item>
 			<ion-item>
 				<ion-label fixed>Password</ion-label>
 				<ion-input type="password" [(ngModel)]="password"></ion-input>
 			</ion-item>
 		</ion-list>
-
-		<ion-grid>
-			<ion-row>
-				<ion-col width-50>
-					<button ion-button block (click)="register()">Register</button>
-				</ion-col>
-			</ion-row>
-			<ion-row>
-				<ion-col width-50>
-					<button ion-button block (click)="login()">Login</button>
-				</ion-col>
-			</ion-row>
-			<ion-row>
-				<ion-col width-50>
-				    <button ion-button full (click)="gLogin()">Google Login</button>
-				</ion-col>
-			</ion-row>
-		</ion-grid>
+	<ion-grid>
+		<ion-row>
+			<ion-col width-50>
+				<button ion-button block  color="secondary" (click)="register()">Register</button>
+			</ion-col>
+			<ion-col width-50>
+				<button ion-button color="dark" block (click)="back()">Back</button>
+			</ion-col>	
+		</ion-row>
+	</ion-grid>
 	</div>
 
-<div *ngIf="auth.isAuthenticated()">
-	<ion-col width-50>
-		<button ion-button block (click)="openMap()">Open Map</button>
-	</ion-col>
-	<ion-col width-50>
-		<button ion-button block (click)="mySites()">My sites</button>
-	</ion-col>
-	<ion-col width-50>
-		<button ion-button color="dark" block (click)="logout()">Logout</button>
-	</ion-col>	
+<div>
+
 
 <!--	<h4>User Profile</h4>
 	<ion-list *ngIf="auth.isAuthenticated()">
