@@ -4,7 +4,9 @@ import { Auth, User, UserDetails, IDetailedError } from '@ionic/cloud-angular';
 import { GooglePlus } from 'ionic-native';
 import { MapPage } from '../map/map';
 import { RegisterPage } from '../register/register';
-
+import { Facebook } from '@ionic-native/facebook';
+import 'rxjs/add/operator/map';
+import firebase from 'firebase';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -18,10 +20,16 @@ export class HomePage {
   public birthday: string = "";
   public mapPage: any = MapPage;
   public registerPage: any = RegisterPage;
+  userProfile: any = null;
 
   public flagRegister: boolean = false;
 
-  constructor(public navCtrl: NavController, public auth: Auth, public user: User, public loadingCtrl: LoadingController, public toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController, 
+              public auth: Auth,
+              public user: User,
+              public loadingCtrl: LoadingController, 
+              public toastCtrl: ToastController,
+              private facebook: Facebook) {
     this.initProfile();
   }
 
@@ -128,25 +136,21 @@ export class HomePage {
     this.password = '';
   }
 
+  facebookLogin(){
+      this.facebook.login(['email']).then( (response) => {
+          const facebookCredential = firebase.auth.FacebookAuthProvider
+              .credential(response.authResponse.accessToken);
 
-  gLogin(){
- 
-        GooglePlus.login({
-          'webClientId': '829980794249-vhiv4do759tutlacrna5eo1sil6rtasd.apps.googleusercontent.com'
-        }).then((res) => {
-            console.log(res);
-        }, (err) => {
-            console.log(err);
-        });
- 
-    }
+          firebase.auth().signInWithCredential(facebookCredential)
+          .then((success) => {
+              console.log("Firebase success: " + JSON.stringify(success));
+              this.userProfile = success;
+              console.log(this.userProfile);
+          })
+          .catch((error) => {
+              console.log("Firebase failure: " + JSON.stringify(error));
+          });
 
-    gLogout(){
- 
-        GooglePlus.logout().then(() => {
-            console.log("logged out");
-        });
- 
-    }
-
+      }).catch((error) => { console.log(error) });
+  }
 }
